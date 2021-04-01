@@ -28,7 +28,9 @@ public class Transloadit: NSObject, URLSessionTaskDelegate {
         guard let config = Transloadit.config else {
             fatalError("Error - you must call setup before accessing Transloadit")
         }
-        var tusConfig = TUSConfig(withUploadURLString: "https://tusd.tusdemo.net/files")
+        //TUS requries a config to be set before use, the upload string here is ignored and replaced later during the upload process
+        //See comment 'TUS Upload URL set here' to see where the upload URL is set
+        var tusConfig = TUSConfig(withUploadURLString: "")
         tusConfig.logLevel = .All
         TUSClient.setup(with: tusConfig)
         executor = TransloaditExecutor(withKey: Transloadit.config!.publicKey, andSecret: Transloadit.config!.privateKey)

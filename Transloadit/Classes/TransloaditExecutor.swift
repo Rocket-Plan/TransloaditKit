@@ -57,6 +57,7 @@ class TransloaditExecutor: TUSDelegate {
             if (response.success) {
                 if object.isKind(of: Assembly.self) {
                     Transloadit.shared.delegate?.transloaditCreation(forObject: object as! Assembly, withResult: response)
+                    //TUS Upload URL set here
                     TUSClient.shared.uploadURL = URL(string: response.tusURL)!
                     //TUSClient.shared.startOrResume(forUpload: (object as! Assembly).tusUpload!, withExisitingURL: "")
                     (object as! Assembly).tusUpload?.metadata = ["fieldname": "file-input",
@@ -195,7 +196,10 @@ class TransloaditExecutor: TUSDelegate {
         }
         
         let boundary = UUID.init().uuidString
-        let headers = ["Content-Type": String(format: "multipart/form-data; boundary=%@", boundary)]
+        let headers = [
+            "Content-Type": String(format: "multipart/form-data; boundary=%@", boundary),
+            "Transloadit-Client": TRANSLOADIT_VERSION
+        ]
         
         
         let formFields = generateBody(forAPIObject: object, includeSecret: true)

@@ -19,3 +19,5 @@ let TRANSLOADIT_API_TEMPLATE = "/templates"
 
 // MARK: TUS Resumable
 let TRANSLOADIT_API_TUS_RESUMABLE = "/resumable/files/"
+
+let TRANSLOADIT_VERSION = "TransloaditKit:2.1.0"
