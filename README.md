@@ -8,7 +8,7 @@ This is an **iOS and macOS** SDK to make it easy to talk to the [Transloadit](ht
 
 ## Install
 
-The library can be downloaded manualy from this repo, or installed with your favorite package managment software
+The library can be downloaded manually from this repo, or installed with your favorite package managment software
 
 **CocoaPods:**
 
@@ -106,27 +106,49 @@ Transloadit.shared.delegate = self
 
 ## Usage
 
-### Create an Assembly
 
-To create an Assembly, you use the `newAssembly` method.
+### Import TransloaditKit
+
+*Objective-C*
+```objc
+#import <TransloaditKit/Transloadit.h>
+```
+
+*Swift*
+```Swift
+import Transloadit
+```
+
+### Initializing TransloaditKit
+
+*Objective-C*
+
+```objc
+@interface TransloaditViewController () <TransloaditDelegate>
+@end
+...
+Transloadit *transloadit;
+....
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  transloadit = [[Transloadit alloc] init];
+  [transloadit setDelegate:self];
+  ...
+}
+```
+
+*Swift*
 
 ```Swift
-// Create the assembly
-let assembly: Assembly = Transloadit.shared.newAssembly()
-
-//Create the steps
-var resizeSteps: [String: Any] = [:]
-                newSteps["robot"] = "/image/resize"
-                newSteps["width"] = 75
-            
-//Add the steps
-assembly.addStep(name: "resize", options: resizeSteps)
-
-//Add the file
-assembly.addFile(withPathURL: imageURL as! URL)
-
-//Create and run the assembly
-assembly.save()
+class TransloaditViewControllerSwifty: UIViewController, TransloaditDelegate {
+  ...
+  let transloadit: Transloadit = Transloadit()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.transloadit.delegate = self;
+    ...
+  }
+}
 ```
 
 ## Example
