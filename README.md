@@ -8,7 +8,7 @@ This is an **iOS and macOS** SDK to make it easy to talk to the [Transloadit](ht
 
 ## Install
 
-The library can be downloaded manualy from this repo, or installed with your favorite package managment software
+The library can be downloaded manually from this repo, or installed with your favorite package managment software
 
 **CocoaPods:**
 
@@ -136,3 +136,52 @@ Download the GitHub repo and open the [`Example/`](https://github.com/transloadi
 ## License
 
 [The MIT License](LICENSE).
+
+
+
+## Usage
+
+
+### Import TransloaditKit
+
+*Objective-C*
+```objc
+#import <TransloaditKit/Transloadit.h>
+```
+
+*Swift*
+```Swift
+import Transloadit
+```
+
+### Initializing TransloaditKit
+
+*Objective-C*
+
+```objc
+@interface TransloaditViewController () <TransloaditDelegate>
+@end
+...
+Transloadit *transloadit;
+....
+- (void)viewDidLoad {
+  [super viewDidLoad];
+  transloadit = [[Transloadit alloc] init];
+  [transloadit setDelegate:self];
+  ...
+}
+```
+
+*Swift*
+
+```Swift
+class TransloaditViewControllerSwifty: UIViewController, TransloaditDelegate {
+  ...
+  let transloadit: Transloadit = Transloadit()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    self.transloadit.delegate = self;
+    ...
+  }
+}
+```
