@@ -35,7 +35,7 @@ class TransloaditExecutor: TUSDelegate {
         let dateTime: String = formatter.string(from: Date().addingTimeInterval(300))
         let authObject = ["key": KEY, "expires": dateTime]
         
-        let paramsOg = ["auth": authObject, "steps": steps] as [String : Any]
+        let paramsOg = ["auth": authObject, "steps": steps, "notify_url": (object as! Assembly).notifyURL] as [String : Any]
         let params = paramsOg.merging((object as! Assembly).custom as! [String : Any]) { (current, _) in current }
         let paramsData: Data?
         if #available(iOS 13.0, *) {

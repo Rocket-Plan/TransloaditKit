@@ -14,6 +14,7 @@ public class Assembly: APIObject {
     
     internal var tusUpload: TUSUpload?
     public var assemblyURL: String?
+    public var notifyURL: String?
 
     
     internal var steps: NSMutableDictionary = [:]

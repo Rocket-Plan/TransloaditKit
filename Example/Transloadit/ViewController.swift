@@ -44,6 +44,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             assembly.addCustomParam(key: "Custom", dictionary: ["TestKey": "TestValue"])
             assembly.addCustomParam(key: "Custom2", string: "TestValue2")
 
+            assembly.notifyURL = "http://testurl.com/"
             assembly.addFile(withPathURL: imageURL as! URL)
             assembly.create()
             

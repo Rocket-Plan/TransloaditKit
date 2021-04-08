@@ -30,7 +30,7 @@ public class Transloadit: NSObject, URLSessionTaskDelegate {
         }
         //TUS requries a config to be set before use, the upload string here is ignored and replaced later during the upload process
         //See comment 'TUS Upload URL set here' to see where the upload URL is set
-        var tusConfig = TUSConfig(withUploadURLString: "")
+        var tusConfig = TUSConfig(withUploadURLString: "https://transloadit.com")
         tusConfig.logLevel = .All
         TUSClient.setup(with: tusConfig)
         executor = TransloaditExecutor(withKey: Transloadit.config!.publicKey, andSecret: Transloadit.config!.privateKey)
